@@ -6,6 +6,7 @@ class Server{
         this.app = express()
         this.port = process.env.PORT
         this.usuarioPath = '/estampado' //Ruta de la API
+        this.rolesPath = '/rl' //Ruta de la API
         this.routes()
         this.conectarDB()
     }
@@ -19,6 +20,7 @@ class Server{
     }
     routes(){
         this.app.use(this.usuarioPath, require('../routes/estampado'))
+        this.app.use(this.rolesPath, require('../routes/rol'))
     }
 
     async conectarDB(){
